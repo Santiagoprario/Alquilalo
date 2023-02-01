@@ -1,0 +1,101 @@
+{
+  "name": "ft-persoft",
+  "description": "PERSOFT APP WITH Tailwind CSS, TypeScript and React.js",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Santiago Prario & Mauro Suarez",
+    "email": "santiagoprario@gmail.com",
+    "url": "http://github.com/Santiagoprario"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/classnames": "^2.2.10",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.10.1",
+    "@types/react": "^16.9.49",
+    "autoprefixer": "^10.0.1",
+    "axios": "^1.2.0",
+    "classnames": "^2.2.6",
+    "postcss-cli": "^8.0.0",
+    "react": "18.2.0",
+    "react-dom": "^16.13.1",
+    "react-dotenv": "^0.1.3",
+    "react-hook-form": "^7.40.0",
+    "react-query": "^3.39.2",
+    "react-router-dom": "^6.4.3",
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^1.8.10",
+    "typescript": "^4.0.2",
+    "@fortawesome/fontawesome-free": "5.15.3",
+    "@tailwindcss/forms": "0.2.1"
+  },
+  "scripts": {
+    "start": "react-dotenv && npm run watch:tailwind && react-scripts start",
+    "build:tailwind": "tailwindcss -i ./src/styles/index.css -o ./src/styles/tailwind.css --minify",
+    "watch:tailwind": "tailwindcss -i ./src/styles/index.css -o ./src/styles/tailwind.css --watch",
+    "tailwind:css": "tailwind build src/styles/index.css -c tailwind.config.js -o src/styles/tailwind.css",
+    "build": "npm run tailwind:css && react-scripts build",
+    "test": "react-scripts test",
+    "prettify": "prettier --write src/",
+    "eslint": "eslint src/",
+    "eslint:fix": "eslint --fix",
+    "stylelint": "stylelint src/",
+    "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.ts{,x}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "eslint src/*.js --fix-dry-run"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "@types/prop-types": "^15.7.3",
+    "@typescript-eslint/eslint-plugin": "4.6.0",
+    "@typescript-eslint/parser": "4.6.0",
+    "eslint": "6.6.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "6.14.0",
+    "eslint-import-resolver-babel-module": "5.2.0",
+    "eslint-import-resolver-typescript": "2.3.0",
+    "eslint-import-resolver-webpack": "0.13.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-lodash": "7.1.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "msw": "^0.49.1",
+    "prettier": "^2.1.2",
+    "prop-types": "^15.7.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "msw": {
+    "workerDirectory": "public"
+  }
+}

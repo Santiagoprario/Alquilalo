@@ -1,0 +1,46 @@
+{
+  "allowJs": true,
+  "compilerOptions": {
+    "module": "ESNext",
+    "baseUrl": ".",
+    "allowJs": true,
+    "checkJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "moduleResolution": "Node",
+    "noEmit": true,
+    "sourceMap": true,
+    "target": "ESNext",
+    "skipLibCheck": false,
+    "strict": false,
+    "forceConsistentCasingInFileNames": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/mocks/handlers",
+    "src/context/AppContext/index.tsx",
+    "src/components/Spinner/index.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ],
+  "types": [
+    "typePatches"
+  ]
+}
