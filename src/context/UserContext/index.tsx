@@ -1,6 +1,5 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect, useMemo } from 'react';
 import { UserProfile } from '../../types/domain/userProfile';
-import { responseLoginSuccess } from '../../mocks/data/login';
 
 interface UserProviderProps {
 	children: React.ReactNode;
@@ -17,9 +16,14 @@ const UserContext = createContext<UserContextProps>({
 });
 
 function UserProvider({ children }: UserProviderProps): JSX.Element {
-	const [userProfile, setUserProfile] = React.useState<UserProfile>(
-		responseLoginSuccess.userProfile
-	);
+	const [userProfile, setUserProfile] = React.useState<UserProfile | undefined>();
+
+	useEffect(() => {
+    const storedUserProfile = localStorage.getItem('userProfile');
+    if (storedUserProfile) {
+      setUserProfile(JSON.parse(storedUserProfile));
+    }
+  }, []);
 
 	return (
 		<UserContext.Provider

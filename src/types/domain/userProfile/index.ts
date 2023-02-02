@@ -1,9 +1,12 @@
 export interface UserProfile {
-	id: string;
+	_id: string;
 	name: string;
 	lastName: string;
 	email: string;
 	role: UserProfileNavigationGroup;
+	API_KEY?: string;
+	uid_client?: string;
+	permisions?: string[];
 }
 
 export interface UserProfileNavigationOption {

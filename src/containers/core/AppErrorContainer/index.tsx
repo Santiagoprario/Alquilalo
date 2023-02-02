@@ -10,14 +10,22 @@ function AppErrorContainer({
 	const navigate = useNavigate();
 
 	const reloadPage = useCallback(() => {
-		navigate(0);
+		navigate('/dashboard');
+		
 	}, [navigate]);
 
 	return (
-		<div>
-			<h1 className="">{title}</h1>
+
+		<div className='flex flex-col'>
+			<h1 className="flex ">{title}</h1>
 			<h3 className="">{subtitle}</h3>
-			<button onClick={retryOnError || reloadPage}>Regresar al inicio</button>
+			<button
+      className="bg-pink-500 max-w-600 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+      type="submit"
+      onClick={reloadPage}
+      >
+        Volver al inicio
+      </button>
 		</div>
 	);
 }

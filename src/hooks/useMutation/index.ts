@@ -6,8 +6,8 @@ import {
 	useQueryClient,
 } from 'react-query';
 
-import { FetchServiceEndpoint, FetchError } from '../../types/service';
-import { AppContext, AuthContext } from '../../context';
+import { FetchServiceEndpoint, FetchError } from '@/types/service';
+import { AppContext, AuthContext } from '@/context';
 
 interface UseMutationOptions<T, P>
 	extends Omit<UseMutationOptionsProps<T, FetchError<T>, P>, 'onSettled'> {
@@ -34,7 +34,7 @@ function useMutation<P, T>(
 			handleErrors: true,
 			onSettled: (mutationBody: P) => {
 				if (showLoadingBackdrop) {
-					setLoading(true);
+					setLoading(false);
 				}
 				queryClient.invalidateQueries(fetchService(mutationBody).keys);
 			},
@@ -54,7 +54,7 @@ function useMutation<P, T>(
 	useEffect(() => {
 		if (handleErrors) {
 			if (useMutationResult.error) {
-				setError({ fetchError: useMutationResult.error });
+				setError({ title: 'Error en el servidor' });
 			} else {
 				// setError({});
 			}

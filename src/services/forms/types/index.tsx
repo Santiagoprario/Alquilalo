@@ -1,15 +1,24 @@
-export interface Forms {
-	type: string;
-	label: string;
+export interface Fields {
+	id: string;
+	title: string;
+	subtitle: string;
+	widget_type: string;
 	value: string;
+	description?: any;
 }
 
 export interface FormResponse {
-	id: string;
-	name: string;
-	fields: Forms[];
+	title: string;
+	color: string;
+	schema_id: string,
+	formValues: Fields[];
 }
 
 export interface FormsRequest {
 	userId: string;
+}
+
+export interface FormsResponse {
+	id: string;
+	created: string;
 }

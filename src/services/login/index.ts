@@ -7,13 +7,13 @@ const SERVICE_BASE_URL = `${API_URL}/login`;
 
 export const loginRequest = (
 	req: LoginRequest
-): FetchServiceEndpoint<LoginResponse> => {
+): FetchServiceEndpoint<{data: LoginResponse}> => {
 	const url = `${SERVICE_BASE_URL}`;
 
 	return {
 		keys: ['login-request'],
 		fetcher: options =>
-			fetchJson<LoginResponse>({
+			fetchJson<{data: LoginResponse}>({
 				url,
 				method: 'POST',
 				data: req,

@@ -6,11 +6,10 @@ interface PanelFitProps {
   subtitle?: string;
 }
 
-const PanelFit: FunctionComponent = ({ title, subtitle, children }: PanelFitProps ) => {
+const PanelFit: FunctionComponent<PanelFitProps> = ({ title, subtitle, children }: PanelFitProps ) => {
 
   return (
-    <div>
-      <div className="w-full xl:w-4/12 px-4">
+      <div className="px-4">
         <div
           className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
         >
@@ -29,16 +28,12 @@ const PanelFit: FunctionComponent = ({ title, subtitle, children }: PanelFitProp
             </div>
           </div>
           <div className="p-4 flex-auto">
-            
             <div className="relative h-350-px">
-              <canvas id="bar-chart">
                 {children}
-              </canvas>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

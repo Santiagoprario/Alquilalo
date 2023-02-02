@@ -52,7 +52,7 @@ function useQuery<T, P>(
   useEffect(() => {
     if (handleErrors && useQueryResult.errorUpdatedAt) {
       if (useQueryResult.error) {
-        setError({ retryOnError: useQueryResult.refetch, fetchError: useQueryResult.error });
+        setError({ retryOnError: useQueryResult.refetch });
       } else {
         setError({});
       }

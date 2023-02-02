@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Dashboard, Login } from '../../../pages';
+import { Dashboard, Login, Profile } from '@/pages';
 import InnerContent from './InnerContent';
 import ProtectedRoutes from './ProtectedRoutes';
 import PublicRoutes from './PublicRoutes';
-import { Forms, Home, Operations } from '../../../pages/Dashboard/pages';
-import Form from '../../../pages/Dashboard/pages/Forms/components/FormContainer';
+import {  Home } from '@/pages';
+import AddUser from '@/pages/AddUser';
+import Users from '@/pages/Users';
 
 const MainRoutes: FunctionComponent = () => (
 	<Routes>
@@ -13,11 +14,15 @@ const MainRoutes: FunctionComponent = () => (
 			<Route path="/" element={<InnerContent />}>
 				<Route path="/" element={<Navigate replace to="dashboard" />} />
 				<Route path="/dashboard" element={<Dashboard />}>
-					<Route path="forms" element={<Forms />}>
-						<Route path=":id" element={<Form />} />
+					<Route path="" element={<Home />} />
+
+					<Route path="adduser" element={<AddUser />} />
+					
+					<Route path="users" element={<Users />} >
+						<Route path="adduser" element={<AddUser />} />
 					</Route>
-					<Route path="home" element={<Home />} />
-					<Route path="operations" element={<Operations />} />
+					
+					<Route path="profile" element={<Profile />} />
 				</Route>
 			</Route>
 		</Route>

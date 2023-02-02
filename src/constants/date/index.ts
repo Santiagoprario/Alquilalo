@@ -1,0 +1,11 @@
+const SHORT_DATE_FORMAT = 'dd/MM/yyyy'
+const LONG_DATE_FORMAT = 'PPPP'
+const LONG_DATE_HOUR_FORMAT = `yyyy-MM-dd HH:mm:ss`
+const SERVICE_DATE_FORMAT = `yyyy-MM-dd'T'HH:mm:ss'.000Z'`
+
+export {
+	SHORT_DATE_FORMAT,
+	LONG_DATE_FORMAT,
+	SERVICE_DATE_FORMAT,
+	LONG_DATE_HOUR_FORMAT,
+}

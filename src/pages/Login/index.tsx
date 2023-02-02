@@ -1,9 +1,8 @@
-import React, { FunctionComponent, useContext, useMemo, useState } from 'react';
+import React, { FunctionComponent, useContext, useEffect, useMemo, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
-import { loginRequest } from '../../services/Login';
-import persoft from '../../assets/persoft.jpg';
-import { Button, Card } from '../../components';
+import { loginRequest } from '@/services/login';
+import persoft from '../../assets/persoft.png';
 import useMutation from '../../hooks/useMutation';
 import { UserContext } from '../../context';
 
@@ -23,17 +22,21 @@ const Login: FunctionComponent = () => {
 	const navigate = useNavigate();
 
     const createLoginMutation = useMutation(loginRequest, {
-      showLoadingBackdrop: true,
+        showLoadingBackdrop: true,
+        handleErrors: false,
     });
 	
 	const isDisabled = useMemo(() => !!email && !!password, [email, password]);
+
+  
 
 	const onSubmit = handleSubmit(() => {
 		createLoginMutation
 			.mutateAsync({ email, password })
 			.then(response => {
-				const { accessToken, userProfile } = response;
+				const { accessToken, userProfile } = response.data;
 				localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('userProfile', JSON.stringify(userProfile));
 				setUserProfile(userProfile);
 				navigate('/dashboard');
 			})
@@ -41,6 +44,18 @@ const Login: FunctionComponent = () => {
 				setError(err);
 			});
 	});
+
+  useEffect(() => {
+    const listener = (event: { code: string; preventDefault: () => void; }) => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        onSubmit();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, []);
 
   return (
     <div className="text-blueGray-700 antialiased">
@@ -66,6 +81,9 @@ const Login: FunctionComponent = () => {
                   <div className="text-blueGray-400 text-center mb-3 font-bold">
                     <small>Iniciar Sesión</small>
                   </div>
+                  {error && <div className="text-red-400 text-center mb-3 font-bold">
+                    <small>Por favor verifique los datos ingresados</small>
+                  </div>}
                   <form onSubmit={onSubmit}>
                     <div className="relative w-full mb-3">
                       <label
