@@ -2,7 +2,6 @@ import React, { FunctionComponent, useContext, useEffect, useMemo, useState } fr
 import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { loginRequest } from '@/services/login';
-import persoft from '../../assets/persoft.png';
 import useMutation from '../../hooks/useMutation';
 import { UserContext } from '../../context';
 
@@ -73,7 +72,7 @@ const Login: FunctionComponent = () => {
               >
                 <div className="rounded-t mb-0 px-6 py-6">
                   <div className="btn-wrapper text-center">
-				          	<img src={persoft} alt='logo' />
+				          	<img src={''} alt='logo' />
                   </div>
                   <hr className="mt-6 border-b-1 border-blueGray-300" />
                 </div>

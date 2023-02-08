@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useContext, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../context';
+import imageUser from '../../../assets/img/profile-pic-l-2.jpg';
 // import useQuery from '@/hooks/useQuery';
 // import { logOutRequest } from '@/services/logout';
 
@@ -33,10 +34,10 @@ const AvatarMenu: FunctionComponent = () => {
         >
           <div className="items-center flex">
             <span
-              className={`${isVisible ? '' : 'hidden'} w-12 h-12 text-white bg-[#C0D467] inline-flex items-center justify-center rounded-full`}
+              className={`${isVisible ? '' : 'hidden'} w-12 h-12 text-white bg-[#3373B5] inline-flex items-center justify-center rounded-full`}
             >
               <div className="inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-[#3373B5] rounded-full">
-                  <span className="font-large text-white">{getInitialsName}</span>
+                  <img src={imageUser} alt='userImage'/>
               </div>
             </span>
           </div>
